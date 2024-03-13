@@ -17,7 +17,7 @@ const registerUser =async(req, res)=>{
                     error : 'password required at least 6 char'
                 })
             }
-            const exist = await user.findOne({email})
+            const exist = await UserModel.findOne({email})
             if(exist){
                 return res.json({
                     error : 'email is already taken'
@@ -29,8 +29,9 @@ const registerUser =async(req, res)=>{
             })
 
             return res.json(user) 
-        }catch{
+        }catch(error){
                 console.log(error)
+                res.status(500).json({error: 'internal server error'})
         }
 
 }

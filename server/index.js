@@ -9,8 +9,10 @@ mongoose.connect(process.env.MONGO_URL)
 .catch((err) => console.log('database not connected'))
 
 const app = express()
-app.use('/',  router) 
+
 app.use(express.json())
+app.use('/',  router) 
+
 const PORT=8000
 
 
