@@ -1,4 +1,5 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 
 const Login = () => {
 
@@ -7,10 +8,17 @@ const Login = () => {
     password : ''
   })
 
-  const loginUser = (e) =>{
-    e.preventDefault 
-
+  const loginUser = async (e) =>{
+    e.preventDefault()
+    try{
+      const response=await axios.get('/')
+      console.log(response.data)
+    }catch(error){
+      console.log(error) 
+    }
   }
+
+
   return (
     <div>
       <form onSubmit={loginUser}>
