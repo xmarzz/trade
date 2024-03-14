@@ -1,5 +1,8 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import axios from 'axios'
+import {toast} from 'react-hot-toast'
+import {useNavigate} from 'react-router-dom'
+
 
 const Login = () => {
 
@@ -9,15 +12,25 @@ const Login = () => {
   })
 
   const loginUser = async (e) =>{
+    const navigate=useNavigate
     e.preventDefault()
+    const {email, password} = data 
     try{
-      const response=await axios.get('/')
-      console.log(response.data)
+      const {data} = await axios.post('/login',{
+        email,
+        password
+      })
+      if(data.error){
+        toast.error(data.error)
+      }
+      else{
+        setData({})
+        navigate('/')
+      }
     }catch(error){
       console.log(error) 
     }
   }
-
 
   return (
     <div>

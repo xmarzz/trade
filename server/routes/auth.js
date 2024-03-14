@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 const router = express.Router() 
-import {test, registerUser } from '../controllers/authController.js'
+import {test, registerUser, loginUser } from '../controllers/authController.js'
 
 
 router.use(
@@ -13,6 +13,7 @@ router.use(
     
 router.get('/',test)
 router.post('/register', registerUser)
+router.post('/login', loginUser)
 
     
 
