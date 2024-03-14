@@ -10,9 +10,10 @@ const Login = () => {
     email : '',
     password : ''
   })
+  
+  const navigate=useNavigate()
 
   const loginUser = async (e) =>{
-    const navigate=useNavigate
     e.preventDefault()
     const {email, password} = data 
     try{
@@ -24,9 +25,10 @@ const Login = () => {
         toast.error(data.error)
       }
       else{
-        setData({})
+        setData({
+        })
         navigate('/')
-      }
+      } 
     }catch(error){
       console.log(error) 
     }

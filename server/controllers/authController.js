@@ -1,7 +1,6 @@
 import {UserModel} from '../models/user.js'
 import { hashPassword, comparePassword } from '../helpers/auth.js'
-import { hash } from 'bcrypt'
-import jwt from 'jsonwebtoken'
+// import jwt from 'jsonwebtoken'
 
 const test=(req,res)=>{
     res.json('test is working') 
@@ -26,9 +25,9 @@ const registerUser =async(req, res)=>{
                     error : 'email is already taken'
                 })
             }
-
+            const hashedPassword = await hashPassword(password)
              const user = await UserModel.create({
-                name, email, password
+                name, email, password: hashedPassword
             })
 
             return res.json(user) 
@@ -38,28 +37,31 @@ const registerUser =async(req, res)=>{
         }
 }
 
-const loginUser=async(req, res)=>{
+
+const loginUser = async (req,res) => {
     try {
-        const {email, password} = req.body
-        const user = await UserModel.findOne({email})
-        if(!user){
-             res.json({error : 'no user found'})
+        const { email, password } = req.body;
+        const user = await UserModel.findOne({ email });
+        if (!user) {
+            return res.json({ error: 'no user found' });
         }
-        const match = await comparePassword(password, user.password)
-        if(match){
-            jwt.sign({email : user.email, id: user._id, name : user.name} , process.env.JWT_SECRET,{} ,(err, token) =>{
-                if(err) throw err 
-                res.cookie('token', token).json(user)
-            })
+        const match = await comparePassword(password, user.password);
+        if (match) {
+            return res.json('password is correct' );
         }
-        if(!match){
-             res.json({error : 'password is incorrect'})
-        }
-    }
-    catch(error){
+        // jwt.sign({ email: user.email, id: user._id, name: user.name }, process.env.JWT_SECRET, {}, (err, token) => {
+        //     if (err) {
+        //         console.error(err);
+        //         return res.status(500).json({ error: 'internal server error' });
+        //     }
+        //     res.cookie('token', token).json(user);
+        // });
+    } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });
     }
-}
+};
+
+
 
 export {test, registerUser, loginUser}
