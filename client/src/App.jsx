@@ -8,9 +8,11 @@ import axios from 'axios'
 import {Toaster} from 'react-hot-toast' 
 import Dashboard from './pages/Dashboard'
 import { UserContextProvider } from '../context/userContext'
+import PrivareRoute from './components/PrivareRoute'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 axios.defaults.withCredentials=true
+
 
 const App = () => {
   return (
@@ -22,7 +24,9 @@ const App = () => {
             <Route path='/' element={<Home/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/login' element={<Login/>}/>
-            <Route path='/dashboard' element={<Dashboard/>}/> 
+            <Route path='/dashboard' element={<PrivareRoute/>}>
+              <Route index element={<Dashboard/>}/>
+            </Route>
           </Routes>
       </UserContextProvider>
     </div>
@@ -30,3 +34,5 @@ const App = () => {
 }
 
 export default App
+
+

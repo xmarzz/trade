@@ -1,7 +1,8 @@
-import {useState} from 'react'
+import {useContext, useState} from 'react'
 import axios from 'axios'
 import {toast} from 'react-hot-toast'
 import {useNavigate} from 'react-router-dom'
+import { UserContext } from '../../context/userContext'
 
 
 const Login = () => {
@@ -12,6 +13,7 @@ const Login = () => {
   })
   
   const navigate=useNavigate()
+  const {setIsAuthenticated } = useContext(UserContext)
 
   const loginUser = async (e) =>{
     e.preventDefault()
@@ -25,9 +27,9 @@ const Login = () => {
         toast.error(data.error)
       }
       else{
-        setData({
-        })
-        navigate('/')
+        setData({})
+        setIsAuthenticated(true)
+        navigate('/dashboard')
       } 
     }catch(error){
       console.log(error) 

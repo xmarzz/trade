@@ -1,6 +1,7 @@
 import {UserModel} from '../models/user.js'
 import { hashPassword, comparePassword } from '../helpers/auth.js'
 import jwt from 'jsonwebtoken'
+import axios from 'axios'
 
 const test=(req,res)=>{
     res.json('test is working') 
@@ -63,23 +64,32 @@ const loginUser = async (req,res) => {
 };
 
 const getProfile=(req, res)=>{ 
-    const {token} =req.cookies 
-    // console.log(req.cookies)
-    res.json(req.cookies)
-    // if(token){
-    //     try{
-    //         const user = jwt.verify(token, process.env.JWT_SECRET)
-    //         res.json({user})
-    //     }catch(err){
-    //         console.log(err)
-    //         res.status(401).json({error :"unauthorized1"})
-    //     }
-    // }else{
-    //         res.status(401).json({ error: 'Unauthorized2' });
-    // }
+    const {token} = req.cookies
+    if(token){
+        jwt.verify(token, process.env.JWT_SECRET, {}, (err, user)=>{
+            if(err) throw err 
+            res.json(user)
+        })
+    }else{
+        res.json(null) 
+    }
 }
 
 
-export {test, registerUser, loginUser, getProfile}
+const getStocks=async (req,res)=>{
+    const {symbol } = req.query
+    const API_KEY=process.env.ALPHA_API
+
+    try {
+        const response = await axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`)
+        res.json(response.data)
+    }catch(data){
+        console.error('failed to fetch',error) 
+        res.status(500).json({error :'failed to fetch the data'})
+    }
+
+}
+
+export {test, registerUser, loginUser, getProfile, getStocks}
 
 
