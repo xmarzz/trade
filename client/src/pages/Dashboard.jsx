@@ -11,7 +11,7 @@ const Dashboard = () => {
  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/stock?symbol=AAPL');
+        const response = await axios.get('/stock?symbol=TSCO');
         const data = response.data;
         setMetadata(data['Meta Data']);
         const weeklyTimeSeries = data['Weekly Time Series'];
