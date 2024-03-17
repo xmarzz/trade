@@ -9,7 +9,7 @@ export function UserContextProvider({children}){
     const [isAuthenticated, setIsAuthenticated] = useState(false) 
 
     useEffect(() =>{
-            axios.get('/profile').then(({data}) =>{
+            axios.get('/profile').then(({data}) =>{ 
             if(data){
                 setUser(data)
                 setIsAuthenticated(true)

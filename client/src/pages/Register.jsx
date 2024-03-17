@@ -32,15 +32,38 @@ const Register = () => {
 
   }
   return (
-    <form onSubmit={registerUser}>
+    <div className="register">
+    <form onSubmit={registerUser} className="register-form">
+      <div className="register-items">
         <label>Name</label>
-        <input type="text" placeholder="enter name..." value={data.name} onChange={((e)=> setData({...data, name: e.target.value}))} />
-        <label>email</label>
-        <input type="email" placeholder="enter email..." value={data.email} onChange={((e) => setData({...data, email : e.target.value}))}/>
+        <input
+          type="text"
+          placeholder="enter name..."
+          value={data.name}
+          onChange={(e) => setData({ ...data, name: e.target.value })}
+        />
+      </div>
+      <div className="register-items">
+        <label>Email</label>
+        <input
+          type="email"
+          placeholder="enter email..."
+          value={data.email}
+          onChange={(e) => setData({ ...data, email: e.target.value })}
+        />
+      </div>
+      <div className="register-items">
         <label>Password</label>
-        <input type="password" placeholder="enter password..." value={data.password} onChange={((e)=>setData({...data, password: e.target.value }))} /> 
-        <button type="text">Submit</button>
+        <input
+          type="password"
+          placeholder="enter password..."
+          value={data.password}
+          onChange={(e) => setData({ ...data, password: e.target.value })}
+        />
+      </div>
+      <button type="submit">Submit</button>
     </form>
+  </div>
   )
 }
 

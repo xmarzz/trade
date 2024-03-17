@@ -3,23 +3,189 @@
 @import 'tailwindcss/utilities';
 
 
-.dashboard{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+   }
+   
+   .register-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   }
+   
+   .register-items {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+   }
+   
+   .register-items label {
+    font-weight: bold;
+   }
+   
+   .register-items input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+   }
+   
+   .register-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+   }
+   
+   .register-form button:hover {
+    background-color: #0056b3;
+   }
+   
 
-.dashboard_headers{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  
-}
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+   }
+   
+   .login-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   }
+   
+   .login-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+   }
+   
+   .login-form input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+   }
+   
+   .login-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+   }
+   
+   .login-form button:hover {
+    background-color: #0056b3;
+   }
+   
 
-.dashboard_ticker, .dashboard_price, .dashboard_date, .dashboard_time{
-  display: flex;
-  padding: 12px;
-  margin: 0 202px 0 220px;
-}
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+   }
+   
+   .dashboard h1 {
+    margin-bottom: 20px;
+   }
+   
+   .dashboard h2 {
+    margin-bottom: 10px;
+   }
+   
+   .metadata {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+   }
+   
+   .metadata p {
+    margin-bottom: 5px;
+   }
+   
+   .dashboard table {
+    width: 100%;
+    border-collapse: collapse;
+   }
+   
+   .dashboard th,
+   .dashboard td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+   }
+   
+   .dashboard th {
+    background-color: #007bff;
+    color: white;
+   }
+   
+   .dashboard tr:nth-child(even) {
+    background-color: #f2f2f2;
+   }
+   
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #007bff;
+    padding: 10px 0;
+   }
+   
+   nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+   }
+   
+   nav a:hover {
+    background-color: #0056b3;
+   }
+   
+
+   .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+   }
+   
+   .home h1 {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 20px;
+   }
+   
+   .home p {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    max-width: 600px;
+   }
+   
+
+   

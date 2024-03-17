@@ -81,7 +81,7 @@ const getStocks=async (req,res)=>{
     const API_KEY=process.env.ALPHA_API
 
     try {
-        const response = await axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${API_KEY}`)
+       const response = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${symbol}&apikey=${API_KEY}`)
         res.json(response.data)
     }catch(data){
         console.error('failed to fetch',error) 
@@ -90,6 +90,12 @@ const getStocks=async (req,res)=>{
 
 }
 
-export {test, registerUser, loginUser, getProfile, getStocks}
+const logoutUser=(req,res)=>{
+    res.clearCookie('token')
+    res.json({message: "log out suceess"})
+}
 
+
+export {test, registerUser, loginUser, getProfile, getStocks, logoutUser}
+ 
 
